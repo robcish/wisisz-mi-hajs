@@ -87,7 +87,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:gravity="center"
-                            android:text="Wybierz kontakt" />
+                            android:text="Kontakt" />
 
                     </LinearLayout>
 
@@ -136,14 +136,29 @@
                         android:layout_gravity="end"
                         android:orientation="horizontal">
 
-                        <ImageView
-                            android:id="@+id/save_icon"
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:adjustViewBounds="true"
-                            android:src="@drawable/ic_save_black_36dp"
-                            android:visibility="@{viewModel.editMode ? View.VISIBLE : View.GONE}" />
+                            android:orientation="horizontal"
+                            android:visibility="@{viewModel.editMode ? View.VISIBLE : View.GONE}">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginEnd="4dp"
+                                android:text="Zapisz" />
+
+                            <ImageView
+                                android:id="@+id/save_icon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/ic_save_black_36dp" />
+
+                        </LinearLayout>
+
 
                         <ImageView
                             android:id="@+id/sms_icon"
@@ -160,6 +175,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:adjustViewBounds="true"
+                            android:longClickable="true"
                             android:src="@drawable/ic_build_black_36dp"
                             android:visibility="@{viewModel.editMode ? View.GONE : View.VISIBLE}" />
 

@@ -8,6 +8,7 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import kotlinx.android.synthetic.main.debt_main_item.view.*
 import rrozanski.wisiszmihajs.databinding.DebtMainItemBinding
 import rx.functions.Action0
@@ -48,9 +49,10 @@ class MainAdapter(internal var vmList: ArrayList<DebtPresenter>,
 
         val context: Context = binding.root.context
 
-        binding.root.settings_icon.setOnClickListener({
+        binding.root.settings_icon.setOnLongClickListener({
             binding.presenter.switchEditMode()
             notifyItemChanged(holder.adapterPosition)
+            true
         })
 
         binding.root.contact_book.setOnClickListener({
@@ -68,8 +70,16 @@ class MainAdapter(internal var vmList: ArrayList<DebtPresenter>,
             notifyItemChanged(holder.adapterPosition)
         })
 
-        binding.root.delete_icon.setOnClickListener({
+        binding.root.delete_icon.setOnLongClickListener({
             removeFromAdapter(holder.adapterPosition)
+            //todo popup
+            true
+        })
+
+        binding.root.sms_icon.setOnLongClickListener({
+            Toast.makeText(binding.root.context, "Jeszcze nie stworzono", Toast.LENGTH_SHORT).show()
+            //todo
+            true
         })
     }
 
