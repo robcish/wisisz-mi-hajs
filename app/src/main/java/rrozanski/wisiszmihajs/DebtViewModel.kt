@@ -6,6 +6,7 @@ package rrozanski.wisiszmihajs
 
 data class DebtViewModel(
         var name: String="",
+        var number:String="",
         var debt: String="",
         var notes: String="",
         var date: String="",

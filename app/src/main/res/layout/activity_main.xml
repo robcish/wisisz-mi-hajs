@@ -19,7 +19,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|start"
                 android:padding="8dp"
-                android:text="@string/ojebales_mnie_na_hajs"
+                android:text="@string/app_name"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
 
             <LinearLayout
