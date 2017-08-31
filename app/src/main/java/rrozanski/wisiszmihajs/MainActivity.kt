@@ -76,19 +76,19 @@ class MainActivity : PermissionsActivity() {
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
-        if (resultCode == Activity.RESULT_OK) {
-            when (requestCode) {
-                GET_CONTACT_REQUEST_CODE -> {
-                    val pos:Int = data.getIntExtra("pos", -1)
-                    val viewHolder = recycler.findViewHolderForAdapterPosition(pos) as MainAdapter.DebtViewHolder
-                    viewHolder.binding.presenter.contactPicked(data, this)
-                    recycler.adapter.notifyItemChanged(pos)
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        when (requestCode) {
+            GET_CONTACT_REQUEST_CODE -> {
+                if (data != null) {
+                    if (resultCode == Activity.RESULT_OK) {
+                        val pos: Int = data.getIntExtra("pos", -1)
+                        val viewHolder = recycler.findViewHolderForAdapterPosition(pos) as MainAdapter.DebtViewHolder
+                        viewHolder.binding.presenter.contactPicked(data, this)
+                        recycler.adapter.notifyItemChanged(pos)
+                    }
                 }
             }
-        } else {
-            Log.e("MainActivity", "Failed to pick contact")
         }
+        super.onActivityResult(requestCode, resultCode, data)
     }
-
 }
