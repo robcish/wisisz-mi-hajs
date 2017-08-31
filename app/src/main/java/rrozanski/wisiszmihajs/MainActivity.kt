@@ -11,7 +11,6 @@ import android.support.design.widget.Snackbar
 import android.support.v4.app.ActivityCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import io.vrinda.kotlinpermissions.PermissionsActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import rrozanski.wisiszmihajs.databinding.ActivityMainBinding
@@ -42,7 +41,6 @@ class MainActivity : PermissionsActivity() {
 
         pickContactAction = Action1<Int> {
             output: Int? ->
-            Log.e("abc", output.toString())
             val contactIntent: Intent = Intent(Intent.ACTION_PICK)
             contactIntent.putExtra("pos", output)
             contactIntent.type = ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE
