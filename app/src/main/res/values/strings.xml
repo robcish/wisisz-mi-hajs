@@ -6,4 +6,6 @@
     <string name="what">Co</string>
     <string name="notes">Notatki</string>
     <string name="save">Zapisz</string>
+    <string name="shrink">Zwiń</string>
+    <string name="expand">Rozwiń</string>
 </resources>

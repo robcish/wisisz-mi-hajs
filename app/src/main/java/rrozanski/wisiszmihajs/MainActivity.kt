@@ -39,8 +39,7 @@ class MainActivity : PermissionsActivity() {
             ActivityCompat.requestPermissions(this, contactPermissions, PERMISSION_READ_CONTACTS)
         }
 
-        pickContactAction = Action1<Int> {
-            output: Int? ->
+        pickContactAction = Action1<Int> { output: Int? ->
             val contactIntent: Intent = Intent(Intent.ACTION_PICK)
             contactIntent.putExtra("pos", output)
             contactIntent.type = ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE
@@ -60,14 +59,20 @@ class MainActivity : PermissionsActivity() {
         })
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int,
-                                            permissions: Array<String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>, grantResults: IntArray
+    ) {
         when (requestCode) {
             PERMISSION_READ_CONTACTS -> {
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     Snackbar.make(mainBinding.root, "Przyznano pozwolenie", Snackbar.LENGTH_SHORT)
                 } else {
-                    Snackbar.make(mainBinding.root, "Pozwolenie jest wymagane", Snackbar.LENGTH_SHORT)
+                    Snackbar.make(
+                        mainBinding.root,
+                        "Pozwolenie jest wymagane",
+                        Snackbar.LENGTH_SHORT
+                    )
                 }
                 return
             }
@@ -79,10 +84,21 @@ class MainActivity : PermissionsActivity() {
             GET_CONTACT_REQUEST_CODE -> {
                 if (data != null) {
                     if (resultCode == Activity.RESULT_OK) {
-                        val pos: Int = data.getIntExtra("pos", -1)
-                        val viewHolder = recycler.findViewHolderForAdapterPosition(pos) as MainAdapter.DebtViewHolder
-                        viewHolder.binding.presenter?.contactPicked(data, this)
-                        recycler.adapter.notifyItemChanged(pos)
+                        if (recycler.findViewHolderForAdapterPosition(
+                                data.getIntExtra(
+                                    "pos",
+                                    -1
+                                )
+                            ) != null
+                        ) {
+                            val pos: Int = data.getIntExtra("pos", -1)
+                            val viewHolder =
+                                recycler.findViewHolderForAdapterPosition(pos) as MainAdapter.DebtViewHolder
+                            viewHolder.binding.presenter?.contactPicked(data, this)
+                            recycler.adapter.notifyItemChanged(pos)
+                        } else {
+                            toast("a")
+                        }
                     }
                 }
             }

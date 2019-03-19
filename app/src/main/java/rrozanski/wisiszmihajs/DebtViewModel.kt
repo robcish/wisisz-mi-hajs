@@ -7,11 +7,12 @@ import android.databinding.ObservableField
  */
 
 data class DebtViewModel(
-        var name: ObservableField<String> = ObservableField(""),
-        var number: ObservableField<String> = ObservableField(""),
-        var debt: ObservableField<String> = ObservableField(""),
-        var notes: ObservableField<String> = ObservableField(""),
-        var date: ObservableField<String> = ObservableField(""),
-        var contactFromBook: Boolean = false,
-        var editMode: Boolean,
-        var collapsed: Boolean = false)
+    var name: ObservableField<String> = ObservableField(""),
+    var number: ObservableField<String> = ObservableField(""),
+    var debt: ObservableField<String> = ObservableField(""),
+    var notes: ObservableField<String> = ObservableField(""),
+    var date: ObservableField<String> = ObservableField(""),
+    var contactFromBook: Boolean = false,
+    var editMode: Boolean,
+    var collapsed: Boolean = false
+)
