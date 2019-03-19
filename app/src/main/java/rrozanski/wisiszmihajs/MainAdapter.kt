@@ -49,38 +49,38 @@ class MainAdapter(internal var vmList: ArrayList<DebtPresenter>,
 
         val context: Context = binding.root.context
 
-        binding.root.settings_icon.setOnLongClickListener({
-            binding.presenter.switchEditMode()
+        binding.root.settings_icon.setOnLongClickListener {
+            binding.presenter?.switchEditMode()
             notifyItemChanged(holder.adapterPosition)
             true
-        })
+        }
 
-        binding.root.contact_book.setOnClickListener({
+        binding.root.contact_book.setOnClickListener {
             if (ContextCompat.checkSelfPermission(context,
                     Manifest.permission.READ_CONTACTS)
-                    != PackageManager.PERMISSION_GRANTED) {
+                != PackageManager.PERMISSION_GRANTED) {
                 permissionsAction.call()
             } else {
                 openContactsAction.call(holder.adapterPosition)
             }
-        })
+        }
 
-        binding.root.save_icon.setOnClickListener({
-            binding.presenter.switchEditMode()
+        binding.root.save_icon.setOnClickListener {
+            binding.presenter?.switchEditMode()
             notifyItemChanged(holder.adapterPosition)
-        })
+        }
 
-        binding.root.delete_icon.setOnLongClickListener({
+        binding.root.delete_icon.setOnLongClickListener {
             removeFromAdapter(holder.adapterPosition)
             //todo popup
             true
-        })
+        }
 
-        binding.root.sms_icon.setOnLongClickListener({
+        binding.root.sms_icon.setOnLongClickListener {
             Toast.makeText(binding.root.context, "Jeszcze nie stworzono", Toast.LENGTH_SHORT).show()
             //todo
             true
-        })
+        }
     }
 
     override fun getItemCount(): Int {

@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Wisisz Mi Hajs</string>
+    <string name="new_debtor">Nowy dłużnik</string>
+    <string name="who">Kto</string>
+    <string name="contact">Kontakt</string>
+    <string name="what">Co</string>
+    <string name="notes">Notatki</string>
+    <string name="save">Zapisz</string>
 </resources>

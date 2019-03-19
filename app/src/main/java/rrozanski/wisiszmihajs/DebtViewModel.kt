@@ -5,9 +5,10 @@ package rrozanski.wisiszmihajs
  */
 
 data class DebtViewModel(
-        var name: String="",
-        var number:String="",
-        var debt: String="",
-        var notes: String="",
-        var date: String="",
-        var editMode: Boolean)
+    var name: String = "",
+    var number: String = "",
+    var debt: String = "",
+    var notes: String = "",
+    var date: String = "",
+    var editMode: Boolean
+)

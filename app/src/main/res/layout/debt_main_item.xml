@@ -55,7 +55,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Dłużnik" />
+                            android:text="@string/who" />
 
                         <EditText
                             android:layout_width="match_parent"
@@ -87,7 +87,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:gravity="center"
-                            android:text="Kontakt" />
+                            android:text="@string/contact" />
 
                     </LinearLayout>
 
@@ -96,7 +96,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Dług" />
+                    android:text="@string/what" />
 
                 <EditText
                     android:layout_width="match_parent"
@@ -109,7 +109,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Notatki" />
+                    android:text="@string/notes" />
 
                 <EditText
                     android:layout_width="match_parent"
@@ -147,7 +147,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginEnd="4dp"
-                                android:text="Zapisz" />
+                                android:text="@string/save" />
 
                             <ImageView
                                 android:id="@+id/save_icon"

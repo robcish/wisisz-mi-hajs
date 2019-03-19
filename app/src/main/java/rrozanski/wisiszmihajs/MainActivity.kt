@@ -83,7 +83,7 @@ class MainActivity : PermissionsActivity() {
                     if (resultCode == Activity.RESULT_OK) {
                         val pos: Int = data.getIntExtra("pos", -1)
                         val viewHolder = recycler.findViewHolderForAdapterPosition(pos) as MainAdapter.DebtViewHolder
-                        viewHolder.binding.presenter.contactPicked(data, this)
+                        viewHolder.binding.presenter?.contactPicked(data, this)
                         recycler.adapter.notifyItemChanged(pos)
                     }
                 }
