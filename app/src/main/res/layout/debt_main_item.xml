@@ -38,7 +38,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="@{viewModel.collapsed ? View.GONE : View.VISIBLE}">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -47,10 +48,10 @@
                     android:weightSum="5">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        app:layout_weight_binding_horizontal="@{viewModel.editMode ? 4 : 5}">
+                        android:layout_weight="4"
+                        android:orientation="vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -58,22 +59,31 @@
                             android:text="@string/who" />
 
                         <EditText
+                            android:id="@+id/debtor_edittext"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:longClickable="false"
                             android:maxLines="1"
                             android:text="@={viewModel.name}"
                             app:editable_edit_text="@{viewModel.editMode}"
                             tools:text="Imię Nazwisko" />
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:text="@{viewModel.number}"
+                            tools:text="+48500600700" />
+
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/contact_book"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:orientation="vertical"
-                        android:visibility="@{viewModel.editMode ? View.VISIBLE : View.GONE}"
-                        app:layout_weight_binding_horizontal="@{viewModel.editMode ? 1 : 0}">
+                        android:visibility="@{viewModel.editMode ? View.VISIBLE : View.GONE}">
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -88,6 +98,32 @@
                             android:layout_gravity="center_horizontal"
                             android:gravity="center"
                             android:text="@string/contact" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/collapse_button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:visibility="@{viewModel.editMode ? View.GONE : View.VISIBLE}"
+                        tools:layout_weight="0"
+                        tools:visibility="gone">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_expand_less_black_36dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:gravity="center"
+                            android:text="Zwiń" />
 
                     </LinearLayout>
 
@@ -192,6 +228,68 @@
 
                 </FrameLayout>
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:visibility="@{viewModel.collapsed ? View.VISIBLE : View.GONE}"
+                android:weightSum="5">
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:maxLines="1"
+                            android:text="@{viewModel.name}"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:maxLines="1"
+                            android:text="@{viewModel.debt}" />
+
+                    </LinearLayout>
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:id="@+id/collapsed_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/ic_expand_more_black_36dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
+                        android:text="Rozwiń" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
